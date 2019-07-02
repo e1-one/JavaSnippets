@@ -6,23 +6,23 @@ public class Warehouse {
 
     private int prod = 0;
 
-    synchronized void get(){
+    synchronized void get() {
         System.out.println("Get");
-        if(prod < 1) {
+        if (prod < 1) {
             try {
                 wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        System.out.println(Thread.currentThread()+"get product. prod count:"+prod);
-        prod --;
+        System.out.println(Thread.currentThread() + "get product. prod count:" + prod);
+        prod--;
         notify();
     }
 
-    synchronized void put(){
+    synchronized void put() {
         System.out.println("Put");
-        if(prod > 0) {
+        if (prod > 0) {
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -35,7 +35,7 @@ public class Warehouse {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(Thread.currentThread()+"put product");
+        System.out.println(Thread.currentThread() + "put product");
         prod++;
         notify();
     }

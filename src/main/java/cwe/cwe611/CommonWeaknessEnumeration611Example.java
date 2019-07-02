@@ -1,6 +1,5 @@
 package cwe.cwe611;
 
-import javax.xml.XMLConstants;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
@@ -9,7 +8,6 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.net.URISyntaxException;
 
 
 //https://cwe.mitre.org/data/definitions/611.html
@@ -19,7 +17,7 @@ public class CommonWeaknessEnumeration611Example {
     private static final String ORIGINAL_XML = "<!DOCTYPE acunetix [  <!ENTITY foo SYSTEM \"" + TEXT_FILE_URI +
             "\">]><xxe>&foo;</xxe>";
 
-    public static void main(String ... args) throws TransformerException {
+    public static void main(String... args) throws TransformerException {
 
 
         TransformerFactory transformerFactory = TransformerFactory.newInstance();

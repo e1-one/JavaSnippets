@@ -6,7 +6,7 @@ public class XorRandomExample {
 
     public static void main(String[] args) {
         x = System.nanoTime();
-        while (true){
+        while (true) {
             System.out.println(randomLong());
         }
     }

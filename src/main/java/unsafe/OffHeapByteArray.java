@@ -5,7 +5,7 @@ import sun.misc.Unsafe;
 import java.lang.reflect.Field;
 
 /**
- * Array will be stored in a special memory region: off-heap and not controlled by the GC process.
+ * This array will be stored in a special memory region: off-heap and not controlled by the GC process.
  */
 class OffHeapByteArray {
 
@@ -45,8 +45,6 @@ class OffHeapByteArray {
         getUnsafe().freeMemory(arrayBeginningAddress);
     }
 
-    //does this check makes a sense?
-    //todo: add checks to class methods
     private void checkArrayBoundaries(long index){
         if(index < 0 || index > arraySize){
             throw new IllegalArgumentException("index: "+index+" is out of boundaries");

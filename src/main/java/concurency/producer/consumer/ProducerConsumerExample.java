@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ProducerConsumerExample {
 
-    public static void main(String ... args) {
+    public static void main(String... args) {
         Warehouse warehouse = new Warehouse();
 
         Thread threadProd = new Thread(new Producer(warehouse));

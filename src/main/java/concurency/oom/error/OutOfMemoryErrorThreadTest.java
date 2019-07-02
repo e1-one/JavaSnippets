@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class OutOfMemoryErrorThreadTest {
 
-    private static final int MEGABYTE = (1024*1024);
+    private static final int MEGABYTE = (1024 * 1024);
 
     private static final int MB_COUNT_TO_ALLOCATE = 1000;
     private static final int JOBS_THREAD_COUNT = 100;
@@ -18,23 +18,22 @@ public class OutOfMemoryErrorThreadTest {
     private static MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();
 
 
-
     //this example shows us that even after OOME application continue work
-    public static void main(String ... args){
+    public static void main(String... args) {
         System.out.println("wait N seconds. You cold connect with JVisualVm");
         sleep(5_000);
         printHeapStatistic(0);
 
         List<Thread> threadList = new LinkedList<>();
-        for(int i = 0; i < JOBS_THREAD_COUNT; i++){
+        for (int i = 0; i < JOBS_THREAD_COUNT; i++) {
             threadList.add(new Thread(() -> allocateHugePortionOfHeapMemory()));
         }
-        for(int i = 0; i < JOBS_THREAD_COUNT; i++){
+        for (int i = 0; i < JOBS_THREAD_COUNT; i++) {
             Thread thread = threadList.get(i);
             sleepAndStart(thread);
         }
 
-        for(int i = 0; i < JOBS_THREAD_COUNT; i++){
+        for (int i = 0; i < JOBS_THREAD_COUNT; i++) {
             threadJoin(threadList.get(i));
         }
 
@@ -42,7 +41,7 @@ public class OutOfMemoryErrorThreadTest {
     }
 
 
-    private static void sleepAndStart(Thread thread){
+    private static void sleepAndStart(Thread thread) {
         sleep(2_000);
         thread.start();
     }
@@ -56,7 +55,7 @@ public class OutOfMemoryErrorThreadTest {
     }
 
     //allocates memory and then wait some time
-    private static void allocateHugePortionOfHeapMemory(){
+    private static void allocateHugePortionOfHeapMemory() {
         int jobId = counter.incrementAndGet();
         printHeapStatistic(jobId);
         try {
@@ -66,13 +65,12 @@ public class OutOfMemoryErrorThreadTest {
             sleep(10_000);
 
             byte aByte = bytes[10000];
-        } catch (OutOfMemoryError error){
-            System.out.println("INSIDE JOB: "+jobId + "!=============== OutOfMemoryError ");
+        } catch (OutOfMemoryError error) {
+            System.out.println("INSIDE JOB: " + jobId + "!=============== OutOfMemoryError ");
             throw error;
         }
-        System.out.println("INSIDE JOB: "+jobId+" +++ Success end of a Job");
+        System.out.println("INSIDE JOB: " + jobId + " +++ Success end of a Job");
     }
-
 
 
     private static void sleep(int millis) {
@@ -83,18 +81,18 @@ public class OutOfMemoryErrorThreadTest {
         }
     }
 
-    private static void printHeapStatistic(int id){
+    private static void printHeapStatistic(int id) {
         MemoryUsage heapUsage = memoryBean.getHeapMemoryUsage();
         long maxMemory = heapUsage.getMax() / MEGABYTE;
         long usedMemory = heapUsage.getUsed() / MEGABYTE;
-        System.out.println("INSIDE JOB: "+ id + " . HeapStatistic : Memory Use :" + usedMemory + "M/" + maxMemory + "M");
+        System.out.println("INSIDE JOB: " + id + " . HeapStatistic : Memory Use :" + usedMemory + "M/" + maxMemory + "M");
     }
 
-    private static void printStatisticNonHeap(int id){
+    private static void printStatisticNonHeap(int id) {
         MemoryUsage heapUsage = memoryBean.getNonHeapMemoryUsage();
         long maxMemory = heapUsage.getMax() / MEGABYTE;
         long usedMemory = heapUsage.getUsed() / MEGABYTE;
-        System.out.println("INSIDE JOB: "+id + " . NonHeap : Memory Use :" + usedMemory + "M/" + maxMemory + "M");
+        System.out.println("INSIDE JOB: " + id + " . NonHeap : Memory Use :" + usedMemory + "M/" + maxMemory + "M");
     }
 
 }
