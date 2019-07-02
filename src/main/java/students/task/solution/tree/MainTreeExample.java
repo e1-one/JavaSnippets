@@ -7,18 +7,9 @@ public class MainTreeExample {
         System.out.println(checkIfPresent(
                 inputData,
                 1000000));
-        //
-
-
     }
 
     public static boolean checkIfPresent(int[] array, int value){
-//        for (int i = 0; i < array.length; i++) {
-//            if(array[i] == value){
-//                return true;
-//            }
-//        }
-
         CustomTreeExample tree = new CustomTreeExample();
 
         for (int i = 0; i < array.length; i++) {

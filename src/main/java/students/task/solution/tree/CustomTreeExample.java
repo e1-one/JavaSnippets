@@ -54,5 +54,14 @@ public class CustomTreeExample {
         }
     }
 
+    //todo: implement
+    public boolean checkIfExist(int value) {
+        return false;
+    }
+
+
+
+
+
 
 }

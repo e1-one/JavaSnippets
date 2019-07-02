@@ -15,7 +15,7 @@ import java.net.URISyntaxException;
 //https://cwe.mitre.org/data/definitions/611.html
 public class CommonWeaknessEnumeration611Example {
 
-    private static final String TEXT_FILE_URI = "file:///D:\\develop\\IdeaProjects\\JavaSnippets\\testCWE661.txt";
+    private static final String TEXT_FILE_URI = "file:///D:\\develop\\IdeaProjects\\JavaSnippets\\tmp\\testCWE661.txt";
     private static final String ORIGINAL_XML = "<!DOCTYPE acunetix [  <!ENTITY foo SYSTEM \"" + TEXT_FILE_URI +
             "\">]><xxe>&foo;</xxe>";
 
