@@ -3,7 +3,7 @@ package socket.datagram;
 
 public class DatagramExample {
 
-    //this example shows that not all packets are processed with UDP protocol. 74% of packets could be lost.
+    //this example shows that not all packets are processed with UDP protocol. Up to 80% of packets could be lost.
 
     public static void main(String[] args) throws Exception {
         int port = 3000;
