@@ -13,7 +13,7 @@ import java.io.StringWriter;
 //https://cwe.mitre.org/data/definitions/611.html
 public class CommonWeaknessEnumeration611Example {
 
-    private static final String TEXT_FILE_URI = "file:///D:\\develop\\IdeaProjects\\JavaSnippets\\tmp\\testCWE661.txt";
+    private static final String TEXT_FILE_URI = "fileserver:///D:\\develop\\IdeaProjects\\JavaSnippets\\tmp\\testCWE661.txt";
     private static final String ORIGINAL_XML = "<!DOCTYPE acunetix [  <!ENTITY foo SYSTEM \"" + TEXT_FILE_URI +
             "\">]><xxe>&foo;</xxe>";
 
@@ -32,7 +32,7 @@ public class CommonWeaknessEnumeration611Example {
         transformer.transform(new StreamSource(new StringReader(ORIGINAL_XML)), new StreamResult(buff));
 
         System.out.println("XML after transformation: " + buff.toString());
-        System.out.println("Can you spot a file content inside 'xxe' tag?  If yes, that means you have cwe611 vulnerability.");
+        System.out.println("Can you spot a fileserver content inside 'xxe' tag?  If yes, that means you have cwe611 vulnerability.");
     }
 
 }
